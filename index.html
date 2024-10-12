@@ -16,6 +16,7 @@
       overflow: hidden;
       font-family: Arial, sans-serif;
     }
+
     .birthday-text {
       font-size: 4rem;
       color: white;
@@ -23,6 +24,7 @@
       text-align: center;
       animation: spin 5s infinite linear;
     }
+
     @keyframes spin {
       from {
         transform: rotateX(0);
@@ -31,30 +33,40 @@
         transform: rotateX(360deg);
       }
     }
-    .audio-control {
+    .play-btn {
       position: absolute;
-      bottom: 10px;
-      left: 10px;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 10px;
-      border-radius: 5px;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px 40px;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background-color 0.3s ease;
     }
-
-    .audio-control audio {
-      width: 200px;
+    .play-btn:hover {
+      background-color: rgba(255, 255, 255, 0.3);
     }
   </style>
 </head>
 <body>
 
   <div class="birthday-text">HAPPY BIRTHDAY</div>
+  <button class="play-btn" onclick="playAudio()">Play Music</button>
+  <audio id="birthdaySong" loop>
+    <source src="song.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
 
-  <div class="audio-control">
-<audio autoplay loop muted>
-  <source src="song.mp3" type="audio/mp3">
-  Your browser does not support the audio element.
-</audio>
-  </div>
+  <script>
+    function playAudio() {
+      var audio = document.getElementById('birthdaySong');
+      audio.play();
+    }
+  </script>
 
 </body>
 </html>
